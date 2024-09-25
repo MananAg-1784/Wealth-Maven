@@ -1,1 +1,2 @@
 # Wealth-Maven
+WealthMaven, a modern and sleek financial portfolio analysis app tailored for stock analysis. Powered by advanced machine learning algorithms, it assesses potential risks and predicts future stock values, offering sector-wise classification for optimized recommendations. Designed for both portfolio managers and individual investors, this app provides the tools needed for making informed financial decisions, ensuring a strategic and data-driven approach to managing stock portfolios.
