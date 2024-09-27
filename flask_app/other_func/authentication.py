@@ -5,11 +5,10 @@ import uuid
 import random
 import string
 
-# flask_app modules
+# Flask app modules
 from flask_app.other_func.global_variables import *
 from flask_app.other_func.enc_dec import encrypt_fernet, decrypt_fernet
 from flask_app.database import connection
-
 from flask_app.logger import logger
 
 def allowed_routes(privilage, request_url):
