@@ -10,11 +10,14 @@ from flask_app.socket_connection import socketio
 MAX_BUFFER_SIZE = 200 * 1000 * 1000  # 50 MB
 socketio.init_app(app,  max_http_buffer_size=MAX_BUFFER_SIZE)
 
-# import flask_app.main_socket
+import flask_app.main_socket
 
 # initialising all the blueprints
 from flask_app.routes import main
 app.register_blueprint(main)
+
+from flask_app.user_login import user_login
+app.register_blueprint(user_login)
 
 # error_handling blueprint
 from flask_app.error_handling import error_handler
@@ -33,11 +36,10 @@ def send_file_data():
 
     if file_name:
         try:
-            file_name = file_name.replace('/', '')
-            # folder_name = folder_name.replace('/','')
-            if file_name.replace('_','').replace('.', '').replace('-','').replace(' ','').isalnum():
+            # file_name = file_name.replace('/', '')
+            if file_name.replace('_','').replace('/','').replace('.', '').replace('-','').replace(' ','').isalnum():
                 if os.path.exists(os.path.join(relative_path,'assets',file_name)):
                     return send_from_directory('static/assets', file_name)
-        except:
-            pass
+        except Exception as e:
+            print("Error while returning static files : ", e)
     return "Unknown File"

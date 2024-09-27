@@ -12,5 +12,5 @@ app.config["DEBUG"] = True
 
 if __name__ == '__main__':
     print("Starting server...")
-    print("http://127.0.0.1:8000")
+    print("http://127.0.0.1:8080")
     WSGIServer(('0.0.0.0', 8080,), app, log=None).serve_forever()

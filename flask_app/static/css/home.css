@@ -517,3 +517,57 @@ header {
 .faq-card.active .faq-answer {
   max-height: 1000px;
 }
+
+.form-card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-card h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-card input[type="text"],
+.form-card input[type="email"],
+.form-card textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-card textarea {
+  height: 150px;
+  resize: none;
+}
+
+.form-card input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-card input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: 20px;
+}
+

@@ -4,15 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In</title>
-    <link rel="stylesheet" href="signin.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/signin.css')}}" />
   </head>
   <body>
     <!-- Sign Up Section -->
     <div class="signin-container">
+
       <!-- Card on the left -->
       <div class="form-card">
-        <a href="landing.html" class="back-icon"> &#8592; </a>
-        <form class="signin-form">
+        <a href="/" class="back-icon"> &#8592; </a>
+        
+        <form class="signin-form" action="/signin" method="post">
           <h2>Hi, Welcome Back</h2>
 
           <input type="text" id="email" placeholder="Enter Email" required />
@@ -31,7 +33,7 @@
           <button class="google-signin-btn">Sign In with Google</button>
 
           <p class="login-link">
-            Don't have an account? <a href="signup.html">Sign Up</a>
+            Don't have an account? <a href="/signup">Sign Up</a>
           </p>
         </form>
       </div>
