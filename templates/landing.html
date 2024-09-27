@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WealthMaven</title>
     <link rel="stylesheet" href="landing.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <header>
@@ -14,18 +15,18 @@
         </div>
         <div class="navbtn">
           <a href="#about" class="btn btn1">Features</a>
-          <a href="#" class="btn btn2">How It Works</a>
-          <a href="#" class="btn btn3">Statistics</a>
-          <a href="#" class="btn btn4">FAQ</a>
-          <a href="#" class="btn btn5">Contact Us</a>
+          <a href="#working" class="btn btn2">How It Works</a>
+          <a href="#stats" class="btn btn3">Statistics</a>
+          <a href="#faq-section" class="btn btn4">FAQ</a>
+          <a href="#footer" class="btn btn5">Contact Us</a>
         </div>
         <div class="cta">
-          <a href="#" class="btn btn1">Sign Up</a>
-          <a href="#" class="btn btn2">Get Started</a>
+          <a href="signin.html" class="btn btn1">Sign In</a>
+          <a href="signup.html" class="btn btn2">Get Started</a>
         </div>
       </nav>
     </header>
-    <section class="hero">
+    <section id="hero" class="hero">
       <div class="content">
         <h1>
           Welcome to <br />
@@ -35,10 +36,10 @@
           Maximise your stock portfolio <br />
           with our powerful optimizer
         </h2>
-        <a href="#" class="btn btn2">Get Started</a>
+        <a href="signup.html" class="btn btn2">Get Started</a>
       </div>
     </section>
-    <section class="about">
+    <section id="about" class="about">
       <div class="content">
         <h1>What is WealthMaven?</h1>
         <p>
@@ -95,7 +96,7 @@
         </div>
       </div>
     </section>
-    <section class="working">
+    <section id="working" class="working">
       <h2>How It Works</h2>
       <div class="steps">
         <div class="step">
@@ -155,7 +156,7 @@
         </div>
       </div>
     </section>
-    <section class="stats">
+    <section id="stats" class="stats">
       <div class="statcontent">
         <h1>Why Choose Us</h1>
       </div>
@@ -196,7 +197,7 @@
         </div>
       </div>
     </section>
-    <section class="testimonial">
+    <section id="testimonial" class="testimonial">
       <h2>What Our Users say</h2>
       <div class="tests">
         <div class="test">
@@ -269,49 +270,96 @@
         </div>
       </div>
     </section>
-     <section class="faq-section">
-
-        <h1>Still Have Questions?</h1>
-        <div class="faq-container">
-            <div class="faq-card">
-                <div class="faq-question">
-                    <h3>What is WealthMaven?</h3>
-                    <div class="faq-icon"></div>
-                </div>
-                <div class="faq-answer">
-                    <p>WealthMaven is a comprehensive platform designed to help high-net-worth individuals and portfolio managers make informed investment decisions. It offers advanced risk assessments, portfolio optimization, and real-time data analysis.</p>
-                </div>
-            </div>
-            <div class="faq-card">
-                <div class="faq-question">
-                    <h3>How does WealthMaven optimize portfolios?</h3>
-                    <div class="faq-icon"></div>
-                </div>
-                <div class="faq-answer">
-                    <p>WealthMaven uses advanced algorithms to analyze market data, assess risk, and identify the best investment opportunities. It takes into account your specific goals and risk tolerance to create a tailored investment strategy.</p>
-                </div>
-            </div>
-            <div class="faq-card">
-                <div class="faq-question">
-                    <h3>Is WealthMaven suitable for beginners?</h3>
-                    <div class="faq-icon"></div>
-                </div>
-                <div class="faq-answer">
-                    <p>While WealthMaven is powerful enough for experienced investors, its user-friendly interface makes it accessible to beginners as well. The platform provides educational resources and guided optimization to help new investors make informed decisions.</p>
-                </div>
-            </div>
+    <section id="faq-section" class="faq-section">
+      <h1>Still Have Questions?</h1>
+      <div class="faq-container">
+        <div class="faq-card">
+          <div class="faq-question">
+            <h3>What is a stock portfolio optimizer?</h3>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>
+              A stock portfolio optimizer is a tool that helps investors
+              maximize the return on their investment by selecting the optimal
+              combination of stocks based on various factors such as risk
+              tolerance, investment goals, and market conditions.
+            </p>
+          </div>
         </div>
-     </section>
-
+        <div class="faq-card">
+          <div class="faq-question">
+            <h3>How does WealthMaven optimize portfolios?</h3>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>
+              The stock portfolio optimizer uses advanced algorithms and
+              mathematical models to analyze historical data, market trends, and
+              individual stock performance. It then generates an optimized
+              portfolio that aims to achieve the highest possible return while
+              minimizing risk.
+            </p>
+          </div>
+        </div>
+        <div class="faq-card">
+          <div class="faq-question">
+            <h3>What are the benefits of a stock portfolio optimizer?</h3>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Using a stock portfolio optimizer can provide several benefits,
+              including: <br />1) Diversification: It helps in spreading the
+              investment across different stocks, reducing the risk of loss.
+              <br />2) Maximizing Returns: It identifies the optimal combination
+              of stocks that have the potential to generate higher returns.
+              <br />3) Risk Management: It helps in managing risk by considering
+              factors such as volatility, correlation, and historical
+              performance. <br />4) Time-saving: It automates the process of
+              portfolio optimization, saving time and effort for investors.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
-
-    <script>
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const card = question.closest('.faq-card');
-                card.classList.toggle('active');
-            });
-        });
-    </script>
+    <footer id="footer">
+      <div class="footer-container">
+        <div class="contact-info">
+          <h1>Contact Us</h1>
+          <p>Email: info@wealthmaven.com</p>
+          <p>Phone: +91 12345 67890</p>
+          <p>Address: 123 Wealth Street, Bangalore, India</p>
+        </div>
+        <div class="get-in-touch">
+          <div class="form-card">
+            <form action="submit-form-url" method="POST">
+              <h3>Get in Touch</h3>
+              <input
+                type="text"
+                id="fname"
+                name="firstname"
+                placeholder="First Name"
+              />
+              <input
+                type="text"
+                id="lname"
+                name="lastname"
+                placeholder="Last Name"
+              />
+              <input type="email" id="email" name="email" placeholder="Email" />
+              <textarea
+                id="description"
+                name="description"
+                placeholder="Ask Us Anything"
+              ></textarea>
+              <div class="form-submit">
+                <input type="submit" value="Submit" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  <body>
+    <!-- Sign Up Section -->
+    <div class="signup-container">
+      <!-- Card on the left -->
+      <div class="form-card">
+        <a href="landing.html" class="back-icon"> &#8592; </a>
+        <form class="signup-form" onsubmit="handleSubmit(event)">
+          <h2>Welcome, create your account</h2>
+
+          <input
+            type="text"
+            id="first-name"
+            placeholder="Enter first name"
+            required
+          />
+
+          <input
+            type="text"
+            id="last-name"
+            placeholder="Enter last name"
+            required
+          />
+
+          <input type="email" id="email" placeholder="Enter email" required />
+
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            required
+          />
+
+          <p class="tc">
+            By signing up I agree to the <a href="#">terms and conditions</a>
+          </p>
+
+          <button type="submit" class="signup-btn">Sign Up</button>
+
+          <p class="or">OR</p>
+
+          <button type="button" class="google-signup-btn">Sign Up with Google</button>
+
+          <p class="login-link">
+            Already have an account? <a href="signin.html">Sign in</a>
+          </p>
+        </form>
+      </div>
+      <div class="illustration-card"></div>
+    </div>
+
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault(); 
+        window.location.href = 'verify.html'; 
+      }
+    </script>
+  </body>
+</html>
