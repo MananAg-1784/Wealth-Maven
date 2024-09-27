@@ -1,1 +1,3 @@
-config.py
+flask_app/config.py
+*.pyc
+*.log

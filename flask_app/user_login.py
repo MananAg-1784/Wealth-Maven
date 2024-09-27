@@ -57,20 +57,19 @@ def signup():
 def verify():
     return render_template('verify.html')
 
-@user_login.route('logout')
-@login_required()
+@user_login.route('/logout')
 def logout():
     return redirect('/')
 
-@user_login.route('/signin', method=["POST"])
+@user_login.route('/signin', methods=["POST"])
 def signin_post():
     return render_template('signin.html')
 
-@user_login.route('/signup', method=["POST"])
+@user_login.route('/signup', methods=["POST"])
 def signup_post():
     return render_template('signup.html')
 
-@user_login.route('/verify', method=["POST"])
+@user_login.route('/verify', methods=["POST"])
 def verify_post():
     return render_template('verify.html')
 
