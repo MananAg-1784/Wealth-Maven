@@ -7,15 +7,11 @@ import random
 import requests
 
 from flask_app.database import connection
-
+from flask_app.logger import logger
 from flask_app.other_func.global_variables import *
 from flask_app.other_func.authentication import *
 from flask_app.other_func.send_email import send_mail
-from flask_app.config import website_link
-from flask_app.other_func.enc_dec import encrypt_fernet, decrypt_fernet
-from flask_app.other_func.upload_files import aws_bucket, get_file_name_data
-
-from flask_app.logger import logger
+from flask_app.other_func.enc_dec import *
 
 main = Blueprint('main', __name__)
 

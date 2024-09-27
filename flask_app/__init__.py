@@ -10,9 +10,7 @@ from flask_app.socket_connection import socketio
 MAX_BUFFER_SIZE = 200 * 1000 * 1000  # 50 MB
 socketio.init_app(app,  max_http_buffer_size=MAX_BUFFER_SIZE)
 
-import flask_app.main_socket
-import flask_app.search_socket
-import flask_app.upload_socket
+# import flask_app.main_socket
 
 # initialising all the blueprints
 from flask_app.routes import main
@@ -26,7 +24,6 @@ app.register_blueprint(error_handler)
 @app.route('/static')
 def send_file_data():
     file_name = request.args.get('file_name')
-    # folder_name = request.args.get('folder_name')
 
     # Get the absolute path of the static folder
     current_working_directory = os.getcwd()
