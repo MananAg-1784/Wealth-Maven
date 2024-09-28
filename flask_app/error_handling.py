@@ -1,5 +1,5 @@
 
-from flask import Blueprint, abort
+from flask import Blueprint, abort, render_template, request
 error_handler = Blueprint('error_handling', __name__)
 
 @error_handler.app_errorhandler(404)
@@ -22,9 +22,9 @@ def not_found(e):
 
 @error_handler.app_errorhandler(403)
 def not_found(e):
-    return '''
-        Access Denied  
-    '''
+    response =  '''Access Denied'''
+    response.set_cookie("auth_id", expires= 0)
+    return response
 
 @error_handler.app_errorhandler(500)
 def server_error(e):

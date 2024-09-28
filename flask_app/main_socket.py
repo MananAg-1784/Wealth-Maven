@@ -2,43 +2,64 @@
 from flask import render_template, url_for, request
 from json import dumps
 from time import sleep
-from io import BytesIO
-import openpyxl
-import threading
+import random
 
 from flask_app.database import connection
+from flask_app.config import email_creds, website_url
 from flask_app.socket_connection import socketio
 from flask_app.other_func.global_variables import *
+from flask_app.other_func.send_email import send_mail
+from flask_app.other_func.enc_dec import *
 
-'''
-@socketio.on('dept_users', namespace="/profile")
-@validate_user_access
-def get_dept_users(data_dict, **kwargs):
+
+@socketio.on('get_in_touch_details', namespace="/get_in_touch")
+def get_dept_users(data_dict):
     try:
-        privilage = kwargs.get('user').privilage
-        user_dept = connection.execute_query(f'select dept_id from department where dept_name = "{ kwargs.get("user").dept}" ')
-        user_dept = user_dept[0]['dept_id'] if user_dept else None
+        print("Get in Touch query recieved :", data_dict)
+        response = {}
+        name = f"{data_dict.get('fname')} {data_dict.get('lname')}"
+        email = data_dict.get('email')
+        description = data_dict.get('description')
 
-        if privilage == 'admin':
-            # all the users that are under the admins department
-            response = {}
-            response['dept_users'] = []
-            data = connection.execute_query(f'select unique_id,email,name, privilage from users where dept_id = "{user_dept}" ')
-            if data:
-                for _ in data:
-                    if _['email'] != data_dict['email']:
-                        response['dept_users'].append( {
-                            'name' : _['name'],
-                            'email' : _['email'],
-                            'privilage' : _['privilage']
-                        } )   
-            response['available-privs'] = list(priv.keys())
-            response['dept_users'] = render_template('profile/dept_users.html', dept_users = response['dept_users'], available_privs = response['available-privs'])
-            return response
+        if not name or not email or not description:
+            response["value"] = "Missing Values"
+            response["category"] = "danger"
         else:
-            return None
+            description = f"Name : {name}\nEmail : {email}\n{description}"
+            if send_mail(email_creds["email"],"Query from Website",description):
+                response["value"] = "Query sent, We will contact you as soon as possible"
+                response["category"] = "success"
+            else:
+                raise Exception()
     except Exception as e:
-        print("Exception while getting dept_users", e)
-        return None
- 
-'''
+        response["value"] = "Server Error, Try Again"
+        response["category"] = "danger"
+    return dumps(response)
+
+@socketio.on('resend_otp', namespace="/otp")
+def resend_otp(url):
+    try:
+        user_id = url["url"].split('/')[-1]
+        if user_id:
+            uid = decrypt_fernet(user_id, current_app.secret_key)
+            user_details = connection.execute_query(f"select email from users where user_id = {uid}")
+            if user_details:
+                otp = random.randint(100000, 999999)
+                subject = f'''
+                        Registration is Successfull
+                        Otp for Verification : {otp}
+                        Verification link : {website_url}/verify/{user_id}
+                    '''
+                if send_mail(user_details[0]["email"],"Resend OTP",subject):
+                    return 1
+    except Exception as e:
+        print(e)
+    return 0
+
+@socketio.on('adhaar_otp',namespace='/otp')
+def adhaar_otp():
+    pass
+
+@socketio.on('resend_adhaar_otp',namespace='/otp')
+def resend_adhaar_otp():
+    pass

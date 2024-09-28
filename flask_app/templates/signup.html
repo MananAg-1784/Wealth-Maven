@@ -4,57 +4,125 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
     <link rel="stylesheet" href="{{url_for('static', filename='css/signup.css')}}" />
   </head>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  display: none;
+  margin-right: 12px;
+}
+
+.alert{
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+  </style>
   <body>
     <!-- Sign Up Section -->
     <div class="signup-container">
       <!-- Card on the left -->
       <div class="form-card">
-        <a href="/" class="back-icon"> &#8592; </a>
+          <a href="/" class="back-icon flex row" style="align-items: center;margin-bottom: 10px !important;"> 
+            <div class="flex " style="align-items: center;">
+              <img src="/static?file_name=back-icon.png" alt="" style="
+                  height: 25px;
+                  position: relative;
+                  top: -1px;
+              ">
+            </div>
+            <div style="
+                color: #757575;
+                font-size: 16px;
+            ">Back</div>
+          </a>
 
         <form class="signup-form" action="/signup" method="post">
-          <h2>Welcome, create your account</h2>
-
-          <input
-            type="text"
-            id="first-name"
-            placeholder="Enter first name"
-            required
-          />
-
-          <input
-            type="text"
-            id="last-name"
-            placeholder="Enter last name"
-            required
-          />
-
-          <input type="email" id="email" placeholder="Enter email" required />
-
+          <h2>Sign Up</h2>
+          <h5>Create your account for free</h5>
+          
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="" id="flash_messages">
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{category}}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <div class="flex row" style="gap: 10px; margin-left: 0px !important; margin-right: 0px !important; justify-content: space-between;">
+          <div class="flex column" style="width: 46%">
+            <label for="">First Name</label>
+            <input
+              type="text"
+              id="first-name"
+              name="first-name"
+              placeholder="Enter first name"
+              required
+            />
+          </div>
+          <div class="flex column" style="width: 46%">
+            <label for="">Last Name</label>
+            <input
+              type="text"
+              id="last-name"
+              name = "last-name"
+              placeholder="Enter last name"
+              required
+            />
+          </div>
+        </div>
+             
+         
+          <label for="">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter email" required />
+          <label for="">Password</label>
           <input
             type="password"
             id="password"
+            name = "password"
             placeholder="Enter password"
             required
           />
 
           <p class="tc">
-            By signing up I agree to the <a href="/terms-and-conditions">terms and conditions</a>
+            By signing up I agree to the <a href="/terms-and-conditions">Terms and Conditions</a>
           </p>
 
           <button type="submit" class="signup-btn">Sign Up</button>
 
-          <p class="or">OR</p>
-
-          <button type="button" class="google-signup-btn">Sign Up with Google</button>
-
-          <p class="login-link">
-            Already have an account? <a href="/signin">Sign in</a>
-          </p>
         </form>
+        <div class="flex row" style="gap: 10px; align-items: center; justify-content: center;     margin: 5px 0px 12px 10px;">
+          <span style="border: 0.7px solid #757575; width: 100px;"></span>
+          <p class="or" style="margin: 0px !important">OR</p>
+          <span style="border: 0.7px solid #757575; width: 100px;"></span>
+        </div>
+
+        <a href="#">
+          <button type="button" class="google-signup-btn">Sign Up with Google</button>
+        </a>
+
+        <p class="login-link">
+          Already have an account? <a href="/signin">Sign in</a>
+        </p>
       </div>
-      <div class="illustration-card"></div>
+      <div class="illustration-card">
+      </div>
     </div>
   </body>
 </html>

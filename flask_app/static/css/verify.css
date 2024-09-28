@@ -1,25 +1,41 @@
 * {
-  margin: 5px;
   box-sizing: border-box;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   background-color: #222831;
-  color: #333;
+  color: white;
 }
-
+label{
+  font-size: 15px;
+  margin-bottom: 5px;
+}
 .signin-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100vh;
 }
-
-.form-card {
-  width: 40%;
+.signup-form input:focus{
+  outline: none;
+}
+.signin-form input {
   padding: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+    border: 1px solid #757575;
+    border-radius: 5px;
+    background: #222831;
+    padding-left: 10px;
+    font-size: 14px;
+    color: white;
+}
+.form-card {
+  width: 35%;
+  margin: auto;
+  padding: 50px;
+  /* background-color: #fff; */
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
   border-radius: 20px;
 }
 
@@ -27,26 +43,32 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-.signin-form h2 {
-  margin-bottom: 20px;
-  color: #ff6c00;
+.signip-form input:focus{
+  outline: none;
 }
-
-.signin-form input {
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  font-size: 16px;
+.signin-form h2, .otp-container h2 {
+  margin-bottom: 5px !important;
+    font-weight: 600;
+    font-size: 30px;
+    margin-bottom: 0px;
 }
 
 .signin-btn {
-  padding: 12px;
+  padding: 9px;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 15px;
   cursor: pointer;
   margin-bottom: 10px;
+  width: 100%;
+
+align-items: center;
+}
+h5{
+  font-size: 1.05rem;
+  color: #757575;
+  margin-bottom: 25px;
+  margin-top: 3px;
 }
 
 .signin-btn {
@@ -56,10 +78,10 @@ body {
 }
 
 .illustration-card {
-  width: 70%;
+  width: 60%;
   background-color: #ff6c00;
-  border-top-left-radius: 100px;
-  border-bottom-left-radius: 100px;
+  /* border-top-left-radius: 100px; */
+  /* border-bottom-left-radius: 100px; */
   height: 100%;
   display: flex;
   justify-content: center;
@@ -70,10 +92,6 @@ body {
   margin-top: 20px;
   text-align: center;
 }
-.otp-container h2 {
-  color: #ffff;
-  font-size: 30px;
-}
 .otp-container p {
   color: #fff;
 }
@@ -81,7 +99,9 @@ body {
   color: #fff;
   font-weight: bold;
 }
-
+input:focus{
+  outline: none;
+}
 .otp-inputs {
   display: flex;
   justify-content: center;
@@ -89,12 +109,12 @@ body {
 }
 
 .otp-box {
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
+  width: 65px;
+  height: 75px;
+  font-size: 25px;
   text-align: center;
   margin: 0 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #75757566;
   border-radius: 5px;
 }
 

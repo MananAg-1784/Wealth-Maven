@@ -11,36 +11,25 @@ from flask_app.other_func.enc_dec import encrypt_fernet, decrypt_fernet
 from flask_app.database import connection
 from flask_app.logger import logger
 
-'''
-# Authentication decorator
-def login_required( request_url = None ):
-    def authenticate_user(func):
-        @wraps(func)
-        def validate_user_id(**kwargs):
-            user_id = request.cookies.get('user_id')
-            user_id = decrypt_fernet(user_id, current_app.config['SECRET_KEY'])
+def login_required(f):
+    @wraps(f)
+    def authenticate_user(**kwargs):
+        user_id = request.cookies.get('auth_id')
+        uni = user_id
+        if not user_id:
+            return redirect('/signin')
+        
+        user_id = decrypt_fernet(user_id, current_app.secret_key)
+        if not user_id:
+            return abort(403)
 
-            # user_id is wrong cannot be decrypted
-            if not user_id:
-                logger.warning(f"Broken Cookie Value -> {request.cookies.get('user_id')} ")
-                return abort(403)
-            
-            user_data = connection.execute_query(f"select unique_id, email,name,dept_id, privilage from users where unique_id = '{user_id}'")
+        user_details = connection.execute_query(f"select email, otp from users where user_id = {user_id}")
+        if not user_details:
+            return abort(403)
+        elif user_details[0]["otp"]:
+            flash("User not yet Verified")
+            return redirect(f"/verify/{uni}")
 
-            # the user_id does not exists in the database
-            if not user_data:
-                logger.warning(f"Broken Cookie Value -> {request.cookies.get('user_id')} ")
-                return abort(403)
-
-            user_data = user_data[0]
-            user = create_user_object(user_id)
-
-            # privilage checking
-            route = allowed_routes(user.privilage, request_url)
-            if not route:
-                abort(401)
-            return func(user = user, email = user_data["email"], name = user_data["name"], routes = route)
-
-        return validate_user_id
+        user = User(user_details[0]["email"], user_id)
+        return f(user=user,**kwargs)
     return authenticate_user
-'''

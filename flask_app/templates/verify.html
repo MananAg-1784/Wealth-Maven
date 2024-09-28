@@ -4,16 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
     <link rel="stylesheet" href="{{url_for('static', filename='css/verify.css')}}" />
+    <script src="{{url_for('static', filename='scripts/verify.js')}}" defer></script>
+
   </head>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loader{
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #757371;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    /* display: none; */
+    margin-right: 8px;
+    margin-top: 2px;
+    }
+
+.alert{
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+  </style>
   <body>
     <div class="signin-container">
       <div class="form-card">
-        <form class="signin-form" method="post" action="/verify">
+        <form class="signin-form" method="post" action="">
           <h2>Verify Your Account</h2>
-          <input type="text" id="email" placeholder="Enter Email" required />
-          <input type="password" id="pwd" placeholder="Enter Password" required />
-          <button type="submit" class="signin-btn">Send OTP</button>
+          <h5>Verify your Email Id to proceed further</h5>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          <div class="" id="flash_messages">
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{category}}">
+                          {{ message }}
+                      </div>
+                  {% endfor %}
+              </div>
+          {% endif %}
+        {% endwith %}
+        <label for="">Email</label>
+        {% if email %}
+        <input type="text" id="email" name="email" placeholder="Enter Email" value="{{email}}" required />
+        {% else %}
+        <input type="text" id="email" name="email" placeholder="Enter Email"  required />
+        {% endif %}
+        <label for="">Password</label>
+        <input type="password" name="password" id="pwd" placeholder="Enter Password" style="margin-bottom: 30px !important;" required />
+        <input type="hidden" id="otp" name="otp" placeholder="Enter the OTP"   required />
+          <button type="submit" class="signin-btn">Verify</button>
         </form>
       </div>
       <div class="illustration-card">
@@ -26,13 +73,18 @@
             <input type="text" maxlength="1" class="otp-box" />
             <input type="text" maxlength="1" class="otp-box" />
             <input type="text" maxlength="1" class="otp-box" />
-            <button type="submit" class="submit">Submit</button>
           </div>
-          <p class="resend-link">
-            Did not receive OTP? <a href="#">Send Again</a>
+          <p class="resend-link" style="display: flex; flex-direction: row; justify-content: center;">
+            <span>
+              Did not receive OTP? 
+            </span>
+            <button style="padding-left:5px;background: none;border: none;color: white;font-weight: bold;" id="resend_otp">Send Again</button>
           </p>
         </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
   </body>
+  
 </html>

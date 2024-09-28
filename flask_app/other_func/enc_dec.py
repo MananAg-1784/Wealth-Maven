@@ -31,7 +31,6 @@ def encrypt_fernet(data, key):
         ciphertext = fernet.encrypt(data.encode())
         return ciphertext
     except Exception as e:
-        print("Encryption error : ",e)
         return None
 
 
@@ -42,5 +41,4 @@ def decrypt_fernet(ciphertext, key):
         plaintext = fernet.decrypt(ciphertext).decode()
         return plaintext
     except Exception as e:
-        print("Decryption error : ",e)
         return None

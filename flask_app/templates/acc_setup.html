@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verification</title>
+    <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/acc_setup.css')}}" />
+    <script src="{{url_for('static', filename='scripts/acc_setup.js')}}" defer></script>
+
+  </head>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loader{
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #757371;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    /* display: none; */
+    margin-right: 8px;
+    margin-top: 2px;
+    }
+
+.alert{
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+  </style>
+  <body>
+    <div class="signin-container">
+      <div class="form-card">
+
+        <form class="signin-form" action="/account_setup" method="post">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          <div class="" id="flash_messages">
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{category}}">
+                          {{ message }}
+                      </div>
+                  {% endfor %}
+              </div>
+          {% endif %}
+        {% endwith %}
+          <h2>Account Setup</h2>
+          <h5>Verify your identity with Aadhaar and PAN card</h5>
+          <label for="">Aadhaar Card </label>
+          <input type="text" id="aadhar" placeholder="Enter Aadhaar Number" required />
+          
+          <label for="">PAN card </label>
+          <input type="text" id="pan" placeholder="Enter PAN Number"   required />
+          <div class="otp-container" style="margin-bottom: 30px !important;">
+            <p style="justify-content: space-between;">
+              <span>
+
+                Aadhaar Card Verification Otp 
+              </span>
+              <button id="send-otp">Send OTP</button>
+            </p>
+            <div class="otp-inputs">
+              <input type="text" maxlength="1" class="otp-box" />
+              <input type="text" maxlength="1" class="otp-box" />
+              <input type="text" maxlength="1" class="otp-box" />
+              <input type="text" maxlength="1" class="otp-box" />
+              <input type="text" maxlength="1" class="otp-box" />
+              <input type="text" maxlength="1" class="otp-box" />
+            </div>
+            <p style="justify-content: center;">
+              <span>
+                <span>
+                  Did not recieve OTP ?
+                </span>
+                <button id="resend-otp">
+                  Resend
+                </button>
+              </span>
+            </p>
+          </div>
+          <button type="submit" class="signin-btn">Verify</button>
+        </form>
+
+      </div>
+      <div class="illustration-card"></div>
+    </div>
+  </body>
+</html>

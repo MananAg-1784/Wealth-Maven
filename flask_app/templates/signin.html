@@ -4,38 +4,97 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
     <link rel="stylesheet" href="{{url_for('static', filename='css/signin.css')}}" />
   </head>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  display: none;
+  margin-right: 12px;
+}
+
+.alert{
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+  </style>
   <body>
     <!-- Sign Up Section -->
     <div class="signin-container">
 
       <!-- Card on the left -->
       <div class="form-card">
-        <a href="/" class="back-icon"> &#8592; </a>
+        <a href="/" class="back-icon flex row" style="align-items: center;margin-bottom: 10px !important;"> 
+          <div class="flex " style="align-items: center;">
+            <img src="/static?file_name=back-icon.png" alt="" style="
+                height: 25px;
+                position: relative;
+                top: -1px;
+            ">
+          </div>
+          <div style="
+              color: #757575;
+              font-size: 16px;
+          ">Back</div>
+        </a>
         
         <form class="signin-form" action="/signin" method="post">
           <h2>Hi, Welcome Back</h2>
-
-          <input type="text" id="email" placeholder="Enter Email" required />
-
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="" id="flash_messages">
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{category}}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+          {% endwith %}
+          <label for="">Email</label>
+          <input type="text" id="email" name="email" placeholder="Enter Email" required />
+          <label for="">Password</label>
           <input
             type="password"
             id="pwd"
+            name="password"
             placeholder="Enter Password"
+            style = "margin-bottom: -2px;"
             required
           />
+          <p class="login-link" style="color: #757575; margin-bottom:25px !important; text-align: left;">
+            Don't remeber the password? <a href="/signup" style="color:#ff6c00;">Reset Password</a>
+          </p>
 
           <button type="submit" class="signin-btn">Sign In</button>
 
-          <p class="or">OR</p>
-
-          <button class="google-signin-btn">Sign In with Google</button>
-
-          <p class="login-link">
-            Don't have an account? <a href="/signup">Sign Up</a>
-          </p>
         </form>
+        <div class="flex row" style="gap: 10px; align-items: center; justify-content: center;     margin: 5px 0px 12px 10px;">
+          <span style="border: 0.7px solid #757575; width: 100px;"></span>
+          <p class="or" style="margin: 0px !important;color: #757575;">OR</p>
+          <span style="border: 0.7px solid #757575; width: 100px;"></span>
+        </div>
+
+        <a href="#">
+          <button type="button" class="google-signin-btn">Sign In with Google</button>
+        </a>
+
+        <p class="login-link" style="color: #757575;">
+          Don't have an account? <a href="/signup" style="color:#ff6c00;">Sign up</a>
+        </p>
       </div>
       <div class="illustration-card"></div>
     </div>
