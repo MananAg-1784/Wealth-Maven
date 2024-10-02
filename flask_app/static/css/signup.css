@@ -152,3 +152,24 @@ label{
   color: #333;
   text-align: center;
 }
+
+
+#sign-in-google{
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+}
+
+#google-icon img{
+  height: 22px;
+}
+
+#google-icon{
+  display: flex;
+  position: relative;
+  top: -1px;
+  align-items: center;
+  justify-content: center;
+}

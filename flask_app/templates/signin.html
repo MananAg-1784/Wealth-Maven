@@ -53,6 +53,7 @@
         
         <form class="signin-form" action="/signin" method="post">
           <h2>Hi, Welcome Back</h2>
+          <h5>Sign In to your Account</h5>
           {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             <div class="" id="flash_messages">
@@ -73,6 +74,8 @@
             name="password"
             placeholder="Enter Password"
             style = "margin-bottom: -2px;"
+            pattern="(?=.*\d)[A-Za-z\d]{8,}" 
+               title="Minimum Length : 8, Must contain only letters and digits with atleast one digit" 
             required
           />
           <p class="login-link" style="color: #757575; margin-bottom:25px !important; text-align: left;">
@@ -89,7 +92,16 @@
         </div>
 
         <a href="#">
-          <button type="button" class="google-signin-btn">Sign In with Google</button>
+          <button type="button" class="google-signin-btn">
+            <div id="sign-in-google">
+              <span id="google-icon">
+                <img src="/static?file_name=google.png" alt="">
+              </span>
+              <span>
+                Sign In with Google
+              </span>
+            </div>
+          </button>
         </a>
 
         <p class="login-link" style="color: #757575;">

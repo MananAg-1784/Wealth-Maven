@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Verification</title>
+    <title>Identity Verification</title>
     <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/acc_setup.css')}}" />
     <script src="{{url_for('static', filename='scripts/acc_setup.js')}}" defer></script>
 
@@ -39,6 +39,8 @@
       <div class="form-card">
 
         <form class="signin-form" action="/account_setup" method="post">
+          <h2>Identity Verification</h2>
+          <h5>Verify your identity with Aadhaar and PAN card</h5>
           {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
           <div class="" id="flash_messages">
@@ -50,14 +52,20 @@
               </div>
           {% endif %}
         {% endwith %}
-          <h2>Account Setup</h2>
-          <h5>Verify your identity with Aadhaar and PAN card</h5>
           <label for="">Aadhaar Card </label>
-          <input type="text" id="aadhar" placeholder="Enter Aadhaar Number" required />
+          <input type="text" id="aadhar" 
+            pattern="\d{12}"
+            title="Aadhaar number must be exactly 12 digits"
+            placeholder="Enter Aadhaar Number" required />
           
           <label for="">PAN card </label>
-          <input type="text" id="pan" placeholder="Enter PAN Number"   required />
+          <input type="text" id="pan" placeholder="Enter PAN Number"  
+            pattern="[A-Z]{5}\d{4}[A-Z]"
+            title="PAN must be 5 uppercase letters, followed by 4 digits, and 1 uppercase letter"
+            style="margin-bottom: 23px;"
+            required />
           <div class="otp-container" style="margin-bottom: 30px !important;">
+            <input type="hidden" id="otp" name="otp" placeholder="Enter the OTP"   required />
             <p style="justify-content: space-between;">
               <span>
 
@@ -90,5 +98,7 @@
       </div>
       <div class="illustration-card"></div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
   </body>
 </html>

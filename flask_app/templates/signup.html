@@ -51,7 +51,7 @@
           </a>
 
         <form class="signup-form" action="/signup" method="post">
-          <h2>Sign Up</h2>
+          <h2>Get Started with Us</h2>
           <h5>Create your account for free</h5>
           
           {% with messages = get_flashed_messages(with_categories=true) %}
@@ -72,7 +72,7 @@
               type="text"
               id="first-name"
               name="first-name"
-              placeholder="Enter first name"
+              placeholder="Rohan"
               required
             />
           </div>
@@ -82,7 +82,7 @@
               type="text"
               id="last-name"
               name = "last-name"
-              placeholder="Enter last name"
+              placeholder="Singh"
               required
             />
           </div>
@@ -90,13 +90,15 @@
              
          
           <label for="">Email</label>
-          <input type="email" id="email" name="email" placeholder="Enter email" required />
+          <input type="email" id="email" name="email" placeholder="abc@gmail.com" required />
           <label for="">Password</label>
           <input
             type="password"
             id="password"
             name = "password"
-            placeholder="Enter password"
+            placeholder="hellotime1234"
+            pattern="(?=.*\d)[A-Za-z\d]{8,}" 
+               title="Minimum Length : 8, Must contain only letters and digits with atleast one digit" 
             required
           />
 
@@ -114,7 +116,16 @@
         </div>
 
         <a href="#">
-          <button type="button" class="google-signup-btn">Sign Up with Google</button>
+          <button type="button" class="google-signup-btn">
+          <div id="sign-in-google">
+            <span id="google-icon">
+              <img src="/static?file_name=google.png" alt="">
+            </span>
+            <span>
+              Sign Up with Google
+            </span>
+          </div>
+        </button>
         </a>
 
         <p class="login-link">

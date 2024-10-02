@@ -187,4 +187,5 @@ def account_setup():
 
 @user_login.route('/account_setup', methods=['POST'])
 def account_setup_post():
-    return 1
+    flash("Otp Missing","danger")
+    return redirect("/account_setup")

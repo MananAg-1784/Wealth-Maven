@@ -51,7 +51,7 @@ resendOtpButton.addEventListener('click', () => {
     socket.emit('resend_otp', {url:currentUrl}, (response)=>{
         console.log(response);
         if(response == 1){
-            document.querySelector(".resend-link").innerHTML = 'Otp Sent';
+            document.querySelector(".resend-link").innerHTML = 'Otp Sent!';
         }else{
             document.querySelector(".resend-link").innerHTML = "Server error, Cannot send Otp";
         }
