@@ -36,5 +36,5 @@ def home_page():
 @main.route('/accounts')
 @login_required
 def accounts(user,**kwargs):
-    return "Hi<br><a href='/logout'>Logout</a>"
+    return render_template("accounts.html")
 

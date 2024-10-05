@@ -1,9 +1,1 @@
-[September 27, 21:42:50] | INFO | create_logger >>> Logger configured...
-[September 27, 21:42:54] | INFO | before_request_func_main >>> URL : / | method : GET
-[September 27, 21:42:54] | INFO | home_page >>> New User has visted the site
-[September 27, 21:43:26] | INFO | before_request_func_userLogin >>> URL : /signin | method : GET
-[September 27, 21:43:30] | INFO | before_request_func_main >>> URL : / | method : GET
-[September 27, 21:43:30] | INFO | home_page >>> New User has visted the site
-[September 27, 21:43:30] | INFO | before_request_func_userLogin >>> URL : /signup | method : GET
-[September 27, 21:43:39] | INFO | before_request_func_userLogin >>> URL : /signup | method : POST
-[September 27, 21:43:54] | INFO | before_request_func_userLogin >>> URL : /verify | method : GET
+[October 05, 09:30:48] | INFO | create_logger >>> Logger configured...

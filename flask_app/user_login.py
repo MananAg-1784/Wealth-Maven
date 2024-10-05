@@ -156,12 +156,12 @@ def verify_post(user_id):
         email = request.form.get("email")
         password = request.form.get("password")
         otp = request.form.get("otp")
-        print("Otp", otp)
         if not email or not password or not otp:
             flash("Missing Values", "danger")
         else:
             user_details = user_details[0]
             if email == user_details["email"] and password == decrypt_fernet(user_details["password_hash"],current_app.secret_key) and otp == user_details["otp"]:
+                print("Verified")
                 connection.execute_query(f"update users set otp=null where email = '{email}' ")
                 response = redirect(f'/accounts')
                 response.set_cookie('auth_id', encrypt_fernet(user_id, current_app.secret_key).decode(), max_age=31*60*60*24)
