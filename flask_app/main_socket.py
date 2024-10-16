@@ -13,7 +13,7 @@ from flask_app.other_func.enc_dec import *
 
 
 @socketio.on('get_in_touch_details', namespace="/get_in_touch")
-def get_dept_users(data_dict):
+def get_in_touch(data_dict):
     try:
         print("Get in Touch query recieved :", data_dict)
         response = {}
