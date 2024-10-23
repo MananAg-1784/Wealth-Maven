@@ -70,45 +70,6 @@ body {
   z-index: 0;
 }
 
-.question {
-  margin-bottom: 20px;
-  font-size: 18px;
-  color: #ffffff;
-}
-
-.options {
-  margin-bottom: 20px;
-  color: #f4f4f4;
-}
-
-.options div {
-  margin-bottom: 10px;
-}
-
-input[type="radio"] {
-  margin-right: 10px;
-}
-
-.button-container1 {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-button {
-  background-color: #ff6c00;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 25px;
-}
-
-button:hover {
-  background-color: #e65c00;
-}
-
 .progress-bar-container1 {
   display: flex;
   flex-direction: column;
@@ -157,25 +118,3 @@ button:hover {
   width: 0%;
 }
 
-.finish-container {
-  display: flex;
-  justify-content: center;
-}
-
-#finish-btn {
-  display: none;
-  text-decoration: none;
-  background-color: #ff6c00; 
-  color: white; 
-  padding: 10px 20px; 
-  border: none; 
-  border-radius: 5px; 
-  cursor: pointer;
-  font-size: 25px; 
-  display: inline-block; 
-  text-align: center; 
-}
-
-.button-container1 button {
-  margin: 0 10px;
-}

@@ -3,16 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Risk Assessment</title>
-    <link rel="stylesheet" href="risk.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
+    <title>Investment Horizon</title>
+    <link rel="stylesheet" href="investment.css" />
   </head>
   <body>
     <div class="main-content">
@@ -25,35 +17,32 @@
         </div>
         <div class="progress-bars">
           <div class="progress-line active"><div class="progress1"></div></div>
-          <div class="progress-line active">
-            <div class="progress1"></div>
-          </div>
-          <div class="progress-line inactive">
-            <div class="progress1"></div>
-          </div>
+          <div class="progress-line active"><div class="progress1"></div></div>
+          <div class="progress-line active"><div class="progress1"></div></div>
           <div class="progress-line inactive">
             <div class="progress1"></div>
           </div>
         </div>
       </div>
+
       <div class="container">
         <div id="counter" class="counter"></div>
         <div class="progress-bar-container">
           <div id="progress" class="progress"></div>
         </div>
-        <div id="question-container" class="question-container">
+        <div id="question-container">
           <div id="question" class="question"></div>
           <div id="options" class="options"></div>
         </div>
+
         <div class="button-container1">
-          <button id="prev-btn1">Prev</button>
+          <button id="prev-btn1" style="display: none">Previous</button>
           <button id="next-btn1">Next</button>
-        </div>
-        <div class="button-container finish-container">
-          <a id="finish-btn" href="investment.html">Finish</a>
+          <button id="finish-btn" style="display: none">Finish</button>
         </div>
       </div>
     </div>
-    <script src="risk.js"></script>
+
+    <script src="investment.js"></script>
   </body>
 </html>

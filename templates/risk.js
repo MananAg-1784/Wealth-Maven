@@ -239,6 +239,7 @@ const optionsElement = document.getElementById("options");
 const nextButton = document.getElementById("next-btn1");
 const finishButton = document.getElementById("finish-btn");
 const counterElement = document.getElementById("counter");
+const prevButton = document.getElementById("prev-btn1");
 
 function showQuestion() {
   const progressPercentage = (currentQuestion / (questions.length - 1)) * 100;
@@ -263,7 +264,18 @@ function showQuestion() {
   counterElement.innerText = `Question ${currentQuestion + 1} of ${
     questions.length
   }`;
+
+    prevButton.style.display = currentQuestion === 0 ? "none" : "inline-block";
+
+     if (currentQuestion === questions.length - 1) {
+    nextButton.style.display = "none"; // Hide 'next' on the last question
+    finishButton.style.display = "inline-block"; // Show 'finish' on the last question
+  } else {
+    nextButton.style.display = "inline-block"; // Show 'next' on all other questions
+    finishButton.style.display = "none"; // Hide 'finish' on all but the last question
+  }
 }
+
 
 nextButton.addEventListener("click", () => {
   const selectedOption = document.querySelector('input[name="option"]:checked');
@@ -280,6 +292,13 @@ nextButton.addEventListener("click", () => {
     }
   } else {
     alert("Please select an option!");
+  }
+});
+
+prevButton.addEventListener("click", () => {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    showQuestion();
   }
 });
 
