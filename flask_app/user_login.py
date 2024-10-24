@@ -29,7 +29,7 @@ def signin():
     user_id = decrypt_fernet(user_id, current_app.secret_key)
     if user_id:
         return redirect("/accounts")
-    response = make_response(render_template('signin.html'))
+    response = make_response(render_template('user_login/signin.html'))
     response.set_cookie("auth_id", expires= 0)
     return response
 
@@ -39,7 +39,7 @@ def signup():
     user_id = decrypt_fernet(user_id, current_app.secret_key)
     if user_id:
         return redirect("/accounts")
-    response =  make_response(render_template('signup.html'))
+    response =  make_response(render_template('user_login/signup.html'))
     response.set_cookie("auth_id", expires= 0)
     return response
 
@@ -61,7 +61,7 @@ def verify(user_id):
             flash("Email already verified","success")
             return redirect('/signin')
         
-        response = make_response(render_template('verify.html',email = user_details["email"]))
+        response = make_response(render_template('user_login/verify.html',email = user_details["email"]))
         response.set_cookie("auth_id", expires= 0)
         return response
     except Exception as e:
@@ -142,7 +142,7 @@ def signup_post():
     except Exception as e:
         print(e)
         flash("Server Error, Try Again","danger")
-    return render_template('signup.html')
+    return render_template('user_login/signup.html')
         
 @user_login.route('/verify/<user_id>', methods=["POST"])
 def verify_post(user_id):
@@ -171,7 +171,7 @@ def verify_post(user_id):
     except Exception as e:
         print(e)
         flash("Server Error, Try Again","danger")
-    return render_template('verify.html',email = email)
+    return render_template('user_login/verify.html',email = email)
 
 @user_login.route('/reset_password/<uid>')
 def reset_password():
@@ -183,7 +183,7 @@ def terms_and_conditions():
 
 @user_login.route('/account_setup')
 def account_setup():
-    return render_template('acc_setup.html')
+    return render_template('user_login/acc_setup.html')
 
 @user_login.route('/account_setup', methods=['POST'])
 def account_setup_post():

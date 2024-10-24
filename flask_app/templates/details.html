@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+          Add Portfolio
+        </title>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          rel="stylesheet"/>
+        <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/details.css')}}" />
+        <script src="{{url_for('static', filename='scripts/details.js')}}" defer></script>
+      </head>
+  <body>
+    <div class="dashboard-container">
+      <div class="main-content">
+        <div class="progress-bar-container">
+          <div class="progress-text">
+            <div>Basic Details</div>
+            <div>Risk Assessment</div>
+            <div>Investment Horizon</div>
+            <div>Stocks</div>
+          </div>
+          <div class="progress-bars">
+            <div class="progress-line active"><div class="progress"></div></div>
+            <div class="progress-line inactive">
+              <div class="progress"></div>
+            </div>
+            <div class="progress-line inactive">
+              <div class="progress"></div>
+            </div>
+            <div class="progress-line inactive">
+              <div class="progress"></div>
+            </div>
+          </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+          <div>{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+        <div class="form-container">
+          <form id="basic-details-form" action="/details" method="post">
+            <label for="customer-name">Customer Name:</label>
+            <input
+              type="text"
+              id="customer-name"
+              name="name"
+              required
+            />
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+            <label for="investment-amount">Initial Investment:</label>
+            <input
+              type="text"
+              id="investment-amount"
+              name="amt"
+              pattern="\d*"
+              required
+            />
+            <button type="submit" class="next-btn">Next</button>
+          </form>
+        </div>
+    </div>
+    </div>
+  </body>
+</html>

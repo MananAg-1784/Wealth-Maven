@@ -1,1 +1,32 @@
-[October 05, 09:30:48] | INFO | create_logger >>> Logger configured...
+[October 25, 03:34:17] | INFO | create_logger >>> Logger configured...
+[October 25, 03:34:18] | WARNING | _log >>>  * Debugger is active!
+[October 25, 03:34:18] | INFO | _log >>>  * Debugger PIN: 877-718-863
+[October 25, 03:34:18] | INFO | before_request_func_main >>> URL : /portfolio | method : GET
+[October 25, 03:34:18] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:18] "GET /portfolio HTTP/1.1" 200 -
+[October 25, 03:34:19] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:19] "[36mGET /static?file_name=logo_orange.png HTTP/1.1[0m" 304 -
+[October 25, 03:34:19] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:19] "[36mGET /static/css/portfolio.css HTTP/1.1[0m" 304 -
+[October 25, 03:34:19] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:19] "[36mGET /static/scripts/portfolio.js HTTP/1.1[0m" 304 -
+[October 25, 03:34:19] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:19] "[36mGET /static?file_name=logo_orange.png HTTP/1.1[0m" 304 -
+[October 25, 03:34:20] | INFO | before_request_func_main >>> URL : /portfolio | method : GET
+[October 25, 03:34:20] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:20] "GET /portfolio HTTP/1.1" 200 -
+[October 25, 03:34:20] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:20] "[36mGET /static/css/portfolio.css HTTP/1.1[0m" 304 -
+[October 25, 03:34:20] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:20] "[36mGET /static?file_name=logo_orange.png HTTP/1.1[0m" 304 -
+[October 25, 03:34:20] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:20] "[36mGET /static/scripts/portfolio.js HTTP/1.1[0m" 304 -
+[October 25, 03:34:20] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:20] "[36mGET /static?file_name=logo_orange.png HTTP/1.1[0m" 304 -
+[October 25, 03:34:29] | INFO | before_request_func_main >>> URL : /details | method : GET
+[October 25, 03:34:30] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:30] "GET /details HTTP/1.1" 200 -
+[October 25, 03:34:30] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:30] "[36mGET /static/css/details.css HTTP/1.1[0m" 304 -
+[October 25, 03:34:30] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:30] "[36mGET /static/scripts/details.js HTTP/1.1[0m" 304 -
+[October 25, 03:34:35] | INFO | before_request_func_main >>> URL : /details | method : POST
+[October 25, 03:34:35] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:35] "[32mPOST /details HTTP/1.1[0m" 302 -
+[October 25, 03:34:35] | INFO | before_request_func_main >>> URL : /risk | method : GET
+[October 25, 03:34:35] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:35] "GET /risk HTTP/1.1" 200 -
+[October 25, 03:34:35] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:35] "[36mGET /static/scripts/risk.js HTTP/1.1[0m" 304 -
+[October 25, 03:34:35] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:35] "[36mGET /static/css/risk.css HTTP/1.1[0m" 304 -
+[October 25, 03:34:58] | INFO | before_request_func_main >>> URL : /risk_assessed | method : GET
+[October 25, 03:34:58] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:58] "[32mGET /risk_assessed?question1=1,73&question2=2,78&question3=3,82&question4=4,88&question5=5,92&question6=6,97&question7=7,102&question8=8,107&question9=9,112&question10=10,117&question11=11,121&question12=12,125&question13=13,129&question14=14,133&question15=15,137&question16=16,141&question17=17,142&score=55 HTTP/1.1[0m" 302 -
+[October 25, 03:34:58] | INFO | before_request_func_main >>> URL : /portfolio | method : GET
+[October 25, 03:34:58] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:58] "GET /portfolio HTTP/1.1" 200 -
+[October 25, 03:34:58] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:58] "[36mGET /static/css/portfolio.css HTTP/1.1[0m" 304 -
+[October 25, 03:34:58] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:58] "[36mGET /static?file_name=logo_orange.png HTTP/1.1[0m" 304 -
+[October 25, 03:34:58] | INFO | _log >>> 127.0.0.1 - - [25/Oct/2024 03:34:58] "[36mGET /static/scripts/portfolio.js HTTP/1.1[0m" 304 -

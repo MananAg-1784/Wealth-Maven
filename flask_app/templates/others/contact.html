@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+Contact
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/contact.css')}}" />
+{% endblock %}
+{% block js %}
+
+{% endblock %}
+{% block body %}
+<div class="main-content">
+    <div class="account-container">
+      <div class="user-icon">
+        <img src="/static?file_name=logo_orange.png" alt="User Icon" />
+      </div>
+      <form class="account-form">
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="first-name"
+              placeholder="Enter First Name"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="last-name"
+              placeholder="Enter Last Name"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-container">
+            <input type="email" id="email" placeholder="Enter Email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="mobile-number">Mobile Number</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="mobile-number"
+              placeholder="Enter Mobile Number"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Talktous">Tell Us What You Have In Mind</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="aadhar"
+              placeholder="Enter Your Message"/>
+          </div>
+        </div>
+        <button type="submit" class="save-btn">Save Details</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

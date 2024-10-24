@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block title %}
+Account
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/accounts.css')}}" />
+{% endblock %}
+{% block js %}
+<!-- <script src="{{url_for('static', filename='scripts/accounts.js')}}" defer></script> -->
+{% endblock %}
+{% block body %}
+<style>
+  input{
+    color:white !important;
+  }
+</style>
+<div class="main-content">
+    <div class="account-container">
+      <div class="user-icon">
+        <img src="/static?file_name=logo_orange.png" alt="User Icon" />
+      </div>
+      <form class="account-form" action="/accounts" method="post">
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="first-name"
+              name="first_name"
+              placeholder="Enter First Name"
+              value = {{user.first_name}}
+            />
+            <i class="edit-icon">✏️</i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="last-name"
+              name="last_name"
+              placeholder="Enter Last Name"
+              value = {{user.last_name}}
+            />
+            <i class="edit-icon">✏️</i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-container">
+            <input type="email" id="email" placeholder="Enter Email" value="{{user.email}}"/>
+            <i class="verified-icon">✔️ </i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="pwd"
+              name="password"
+              placeholder="********"
+            />
+            <i class="edit-icon">✏️</i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="aadhar">Aadhar Card</label>
+          {% if not acc and not acc.adhaar_card %}
+            <div class="input-container">
+              <input
+                type="text"
+                id="aadhar"
+                pattern="\d{12}"
+                name="aadhar"
+                placeholder="Enter Aadhar Number"
+              />
+              <i class="edit-icon">✏️</i>
+          {% else %}
+              <div class="input-container">
+                <input
+                  type="text"
+                  id="aadhar"
+                  pattern="\d{12}"
+                  name="aadhar"
+                  value="{{acc.adhaar_card}}"
+                  placeholder="Enter Aadhar Number"
+                  readonly
+                />
+                <i class="verified-icon">✔️ </i>
+          {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pan">PAN Card Number</label>
+          {% if not acc and not acc.pan_card %}
+            <div class="input-container">
+              <input
+                type="text"
+                id="pan"
+                name="pan"
+                pattern="[A-Z]{5}\d{4}[A-Z]"
+                placeholder="Enter PAN Number"
+              />
+              <i class="edit-icon">✏️</i>
+            </div>
+            {% else %}
+            <div class="input-container">
+              <input
+                type="text"
+                id="pan"
+                name="pan"
+                value = "{{acc.pan_card}}"
+                pattern="[A-Z]{5}\d{4}[A-Z]"
+                placeholder="Enter PAN Number"
+                readonly
+              />
+              <i class="verified-icon">✔️ </i>
+            </div>
+            {% endif %}
+        </div>
+        <button type="submit" class="save-btn">Save Details</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

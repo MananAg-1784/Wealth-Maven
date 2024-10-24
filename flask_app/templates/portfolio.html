@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+Portfolio
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/portfolio.css')}}" />
+{% endblock %}
+{% block js %}
+<script src="{{url_for('static', filename='scripts/portfolio.js')}}" defer></script>
+{% endblock %}
+{% block body %}
+<div class="main-content">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      {% for message in messages %}
+        <div>{{ message }}</div>
+      {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <div>
+    {% if portfolios %}
+    <ul >
+      {% for message in portfolios %}
+        <li>Name : {{ message.profile_name }}  | DOB : {{message.dob}}  |  INCOME : {{message.income}} | Risk Score : {{message.risk_score}}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <span>No Portfolio Profiles have been added</span>
+    {% endif %}
+  </div>
+    <div class="plus-button-container">
+      <a href="\details" class="plus-button">
+        <i class="fas fa-plus"></i>
+      </a>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+Insights
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/insights.css')}}" />
+{% endblock %}
+{% block js %}
+<script src="{{url_for('static', filename='scripts/insights.js')}}" defer></script>
+{% endblock %}
+{% block body %}
+<div class="main-content">
+    <!-- NIFTY Overview -->
+    <section class="nifty-overview">
+        <h2>NIFTY 50 Overview</h2>
+        <p>Current Value: <span id="nifty-value"></span></p>
+        <p>Change: <span id="nifty-change"></span></p>
+        <p>Day's High: <span id="nifty-high"></span></p>
+        <p>Day's Low: <span id="nifty-low"></span></p>
+    </section>
+
+    <!-- Stock Section -->
+    <section class="stock-section">
+        <h2>Stock Data</h2>
+        <select id="stock-selector">
+            <option value="RELIANCE.BO">Reliance Industries</option>
+            <option value="TCS.BO">Tata Consultancy Services</option>
+            <!-- Add more NSE stocks here -->
+        </select>
+        <p>Current Price: <span id="stock-price"></span></p>
+        <p>Volume: <span id="stock-volume"></span></p>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts">
+        <canvas id="price-chart"></canvas>
+        <canvas id="volume-chart"></canvas>
+    </section>
+</div>
+{% endblock %}
