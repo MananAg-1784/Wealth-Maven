@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+        <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
+        {% block css %}
+        {% endblock %}
+        {% block js %}
+        {% endblock %}
+    
+      </head>
+  <body>
+    <div class="dashboard-container">
+      <nav class="sidebar">
+        <div class="logo">
+          <img src="/static?file_name=logo_orange.png" alt="WealthMaven Logo" />
+        </div>
+        <ul class="menu">
+          <li>
+            <a href="/dashboard"
+              ><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a
+            >
+          </li>
+
+          <li>
+            <a href="/accounts"
+              ><i class="fas fa-user-circle"></i> <span>Account</span></a
+            >
+          </li>
+          <li>
+            <a href="/insights"
+              ><i class="fas fa-chart-line"></i> <span>Insights</span></a
+            >
+          </li>
+          <li>
+            <a href="/portfolio"
+              ><i class="fas fa-briefcase"></i> <span>Portfolios</span></a
+            >
+          </li>
+        </ul>
+        <ul class="bottom-menu">
+          <li>
+            <a href="/settings"
+              ><i class="fas fa-cog"></i> <span>Settings</span></a
+            >
+          </li>
+          <li>
+            <a href="/privacy-policy"
+              ><i class="fas fa-shield-alt"></i> <span>Privacy Policy</span></a
+            >
+          </li>
+          <li>
+            <a href="/contact"
+              ><i class="fas fa-envelope"></i> <span>Contact Us</span></a
+            >
+          </li>
+          <li>
+            <a href="/terms-and-conditions"
+              ><i class="fas fa-file-contract"></i>
+              <span>Terms & Conditions</span></a
+            >
+          </li>
+          <a href="/logout">
+            <button type="button" class="signup-btn">
+              <i class="fas fa-sign-out-alt"></i><span> Logout</span>
+            </button></a
+          >
+        </ul>
+      </nav>
+      {% block body %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

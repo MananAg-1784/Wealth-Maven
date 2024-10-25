@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}
+Settings
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/settings.css')}}" />
+{% endblock %}
+{% block js %}
+
+{% endblock %}
+{% block body %}
+<div class="main-content">
+    <section class="privacy-settings">
+      <h2>Privacy Settings</h2>
+      <label>
+        <input type="checkbox" id="data-sharing" />
+        Share my data with third parties for marketing purposes
+      </label>
+
+      <h3>Email Notifications</h3>
+      <label>
+        <input type="checkbox" id="newsletter" />
+        Subscribe to the newsletter
+      </label>
+    </section>
+
+    <section class="security-settings">
+      <h2>Security Settings</h2>
+      <label>
+        <input type="checkbox" id="2fa" />
+        Enable Two-Factor Authentication
+      </label>
+
+      <h3>Login History</h3>
+      <p>View recent logins and devices</p>
+    </section>
+
+    <section class="preferences">
+      <h2>Preferences</h2>
+      <h3>Theme</h3>
+      <label>
+        <select id="theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+
+      <h3>Language</h3>
+      <label>
+        <select id="language">
+          <option value="english">English</option>
+          <option value="hindi">Hindi</option>
+          <!-- Add more languages here -->
+        </select>
+      </label>
+    </section>
+
+    <section class="support">
+      <h2>Help and Support</h2>
+      <p><a href="#faq">FAQs</a></p>
+      <p><a href="#contact-support">Contact Support</a></p>
+    </section>
+  </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+          Risk Assessment
+        </title>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          rel="stylesheet"/>
+        <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/risk.css')}}" />
+        <script src="{{url_for('static', filename='scripts/risk.js')}}" defer></script>
+      </head>
+  <body>
+    <div class="dashboard-container">
+      <div class="main-content">
+        <div class="progress-bar-container1">
+          <div class="progress-text">
+            <div>Basic Details</div>
+            <div>Risk Assessment</div>
+            <div>Investment Horizon</div>
+            <div>Stocks</div>
+          </div>
+          <div class="progress-bars">
+            <div class="progress-line active"><div class="progress1"></div></div>
+            <div class="progress-line active">
+              <div class="progress1"></div>
+            </div>
+            <div class="progress-line inactive">
+              <div class="progress1"></div>
+            </div>
+            <div class="progress-line inactive">
+              <div class="progress1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div id="counter" class="counter"></div>
+          <div class="progress-bar-container">
+            <div id="progress" class="progress"></div>
+          </div>
+          <div id="question-container" class="question-container">
+            <div id="question" class="question"></div>
+            <div id="options" class="options"></div>
+          </div>
+          <div class="button-container1">
+            <button id="next-btn1">Next</button>
+          </div>
+          <div class="button-container finish-container">
+            <button id="finish-btn">Finish</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const questions = {{questions|tojson}}
+  </script>
+</html>
