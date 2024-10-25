@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Optimization</title>
+    <link rel="stylesheet" href="optmize.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <div class="header">
+        <div class="logo">
+          <img src="assets/logo_orange.png" alt="WealthMaven Logo" />
+        </div>
+        <button
+          class="optimize-btn"
+          onclick="window.location.href='analyze.html'"
+        >
+          Back to Analysis
+        </button>
+      </div>
+
+      <div class="cards-container">
+        <div class="card">
+          <div class="card-title">Suggested Reallocation</div>
+          <div class="card-value">6 Changes</div>
+          <div class="card-progress">
+            <div class="progress-value positive">+3.2%</div>
+            <div>projected improvement</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Risk Score Change</div>
+          <div class="card-value">-0.5</div>
+          <div class="card-progress">
+            <div class="progress-value positive">Better risk profile</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Cost to Implement</div>
+          <div class="card-value">$142</div>
+          <div class="card-progress">
+            <div class="progress-value">Trading fees</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-container">
+        <div class="chart-card">
+          <div class="chart-title">Portfolio Optimization Comparison</div>
+          <canvas id="optimizationChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <script src="optimize.js"></script>
+  </body>
+</html>

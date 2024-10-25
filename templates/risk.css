@@ -165,15 +165,15 @@ button:hover {
 #finish-btn {
   display: none;
   text-decoration: none;
-  background-color: #ff6c00; 
-  color: white; 
-  padding: 10px 20px; 
-  border: none; 
-  border-radius: 5px; 
+  background-color: #ff6c00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 25px; 
-  display: inline-block; 
-  text-align: center; 
+  font-size: 25px;
+  display: inline-block;
+  text-align: center;
 }
 
 .button-container1 button {

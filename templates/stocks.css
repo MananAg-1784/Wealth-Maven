@@ -118,3 +118,68 @@ body {
   width: 0%;
 }
 
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.stock-name,
+.stock-weight,
+.stock-sector {
+  width: 30%;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #393e46;
+  border-radius: 8px;
+  background-color: #222831;
+  color: white;
+  outline: none;
+}
+
+input::placeholder {
+  color: #808080;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.button {
+  margin-top: 20px;
+  display: block;
+  width: 100px;
+  text-align: center;
+  color: #f4f4f4;
+  background-color: #ff6c00;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button:hover {
+  background-color: #ff8533;
+}
+
+#analyzeButton {
+  display: none;
+}
+
+#nextButton.hidden {
+  display: none;
+}
+
+#numStocks {
+  margin-bottom: 15px;
+  margin-top: 70px;
+}

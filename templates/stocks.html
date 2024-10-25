@@ -9,10 +9,6 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div class="main-content">
@@ -24,7 +20,9 @@
           <div>Stocks</div>
         </div>
         <div class="progress-bars">
-          <div class="progress-line active"><div class="progress1"></div></div>
+          <div class="progress-line active">
+            <div class="progress1"></div>
+          </div>
           <div class="progress-line active">
             <div class="progress1"></div>
           </div>
@@ -35,6 +33,24 @@
             <div class="progress1"></div>
           </div>
         </div>
+      </div>
+
+      <input
+        type="number"
+        id="numStocks"
+        placeholder="Enter number of stocks"
+        min="1"
+      />
+
+      <button id="nextButton" class="button" onclick="goToNextPage()">
+        Next
+      </button>
+
+      <div id="stockInputs"></div>
+
+      <button id="analyzeButton" class="button" onclick="redirectToAnalyze()">
+        Analyze
+      </button>
     </div>
     <script src="stocks.js"></script>
   </body>
