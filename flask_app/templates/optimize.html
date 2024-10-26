@@ -1,0 +1,71 @@
+
+{% extends 'base.html' %}
+{% block title %}
+Portfolio Optimization
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/optimize.css')}}" />
+<style>
+  .dashboard-container{
+    padding: 0px !important;
+  }
+  .chart-card{
+    width: 100% !important;
+  }
+</style>
+{% endblock %}
+{% block js %}
+<script src="{{url_for('static', filename='scripts/optimize.js')}}" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+{% block body %}
+<div style="padding: 50px !important;"> 
+    <div class="header">
+      <button
+        class="optimize-btn"
+        onclick="window.location.href='/analyse'"
+      >
+        Back to Analysis
+      </button>
+    </div>
+
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-title">Suggested Reallocation</div>
+        <div class="card-value">{{stocks|length}} Changes</div>
+        <div class="card-progress">
+          <div class="progress-value positive">+3.2%</div>
+          <div>projected improvement</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Risk Score Change</div>
+        <div class="card-value">-0.5</div>
+        <div class="card-progress">
+          <div class="progress-value positive">Better risk profile</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Cost to Implement</div>
+        <div class="card-value">₹1420</div>
+        <div class="card-progress">
+          <div class="progress-value">Trading fees</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="charts-container">
+      <div class="chart-card">
+        <div class="chart-title">Portfolio Optimization Comparison</div>
+        <canvas id="optimizationChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Generate sample data
+    const categories = {{stocks|tojson}};
+  </script>
+{% endblock %}

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Investment Horizon
+        </title>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          rel="stylesheet"/>
+        <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/investment.css')}}" />
+        <script src="{{url_for('static', filename='scripts/investment.js')}}" defer></script>
+      </head>
+  <body>
+    <div class="main-content">
+        <div class="progress-bar-container1">
+          <div class="progress-text">
+            <div>Basic Details</div>
+            <div>Risk Assessment</div>
+            <div>Investment Horizon</div>
+            <div>Stocks</div>
+          </div>
+          <div class="progress-bars">
+            <div class="progress-line active"><div class="progress1"></div></div>
+            <div class="progress-line active"><div class="progress1"></div></div>
+            <div class="progress-line active"><div class="progress1"></div></div>
+            <div class="progress-line inactive">
+              <div class="progress1"></div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="container">
+          <form id="investmentForm" method="post">
+            <div class="mb-3">
+                <label for="goal" class="form-label">What is your goal?</label>
+                <select id="goal" class="form-select" name="goal" required>
+                    <option value="" disabled selected>Select your goal</option>
+                    <option value="Retirement">Retirement</option>
+                    <option value="Asset Purchase">Asset Purchase</option>
+                    <option value="Wealth Accumulation">Wealth Accumulation</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label for="investmentDuration" class="form-label">For how long are you planning to invest? (in yrs)</label>
+                <input type="text" name="time"  pattern="\d*">
+            </div>
+            
+            <div class="mb-3">
+                <label for="investmentAmount" class="form-label">What is the amount you are planning to invest? (in Rs.)</label>
+                <input type="text" name="amt"  pattern="\d*">
+            </div>
+            <div class="mb-3">
+                <label for="investmentAmount" class="form-label">How much do you want to earn? (in Rs.)</label>
+                <input type="text" name="earn"  pattern="\d*">
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+
+      </div>
+  </body>
+</html>

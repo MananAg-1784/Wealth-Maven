@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Add Stocks
+        </title>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          rel="stylesheet"/>
+
+        <link rel="icon" href="/static?file_name=logo_orange.png" type="image/x-icon">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/add_portfolio.css')}}" />
+        <script src="{{url_for('static', filename='scripts/add_portfolio.js')}}" defer></script>
+      </head>
+      <style>
+        button{
+            background: #ff6c00;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    border-radius: 10px;
+        }
+        select{
+            padding: 10px;
+            color: black;
+            border-radius: 10px;
+            background-color: rgb(227, 227, 227);
+        }
+      </style>
+  <body>
+    <div class="main-content" style="
+    gap: 29px">
+        <div class="progress-bar-container1">
+          <div class="progress-text">
+            <div>Basic Details</div>
+            <div>Risk Assessment</div>
+            <div>Investment Horizon</div>
+            <div>Stocks</div>
+          </div>
+          <div class="progress-bars">
+            <div class="progress-line active">
+              <div class="progress1"></div>
+            </div>
+            <div class="progress-line active">
+              <div class="progress1"></div>
+            </div>
+            <div class="progress-line active">
+              <div class="progress1"></div>
+            </div>
+            <div class="progress-line active">
+              <div class="progress1"></div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="container mt-5">
+            <h1>Add Stocks to Portfolio</h1>
+            <form id="portfolioForm" action="/add_portfolio" method="post">
+                <div class="mb-3">
+                    <label for="stockCount" class="form-label">How many stocks do you want to add?</label>
+                    <input type="number" id="stockCount" class="form-control" min="1" required>
+                </div>
+                <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+        
+                <div id="stockInputs" class="mt-4" style="padding-top: 10px;"></div>
+        
+                <button type="submit" class="btn btn-success mt-4" style="display: none;" id="submitBtn">Submit</button>
+            </form>
+        </div>
+  </body>
+  <script>
+    console.log({{stocks|tojson}});
+    document.getElementById('nextBtn').addEventListener('click', function() {
+        const stockCount = document.getElementById('stockCount').value;
+        const stockInputsDiv = document.getElementById('stockInputs');
+        stockInputsDiv.innerHTML = `
+            <input type="text" value="${stockCount}" name="count" style="display: none !important;">
+        `; // Clear previous inputs
+
+        for (let i = 0; i < stockCount; i++) {
+            const stockInput = `
+                <div class="mb-3" style="padding-top: 10px;">
+                    <label for="stockName${i}" class="form-label">Stock Name</label>
+                    <select id="stockName${i}" name="stocks[${i}][name]" class="form-select" required>
+                        <option value="" disabled selected>Select a stock</option>
+                        {% for stock in stocks %}
+                            <option value="{{ stock.symbol }}">{{ stock.company_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3" style="padding-top: 5px;">
+                    <label for="quantity${i}" class="form-label">Quantity</label>
+                    <input type="number" id="quantity${i}" name="stocks[${i}][quantity]" class="form-control" min="1" required>
+                </div>
+                <div class="mb-3" style="padding-top: 5px;">
+                    <label for="date${i}" class="form-label">Date of Buying</label>
+                    <input type="date" id="date${i}" name="stocks[${i}][date]" class="form-control" required>
+                </div>
+            `;
+            stockInputsDiv.innerHTML += stockInput;
+        }
+
+        // Show the submit button after stock inputs are generated
+        document.getElementById('submitBtn').style.display = 'block';
+    });
+</script>
+</html>

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block title %}
+{{stock.company_name}}
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/insights.css')}}" />
+{% endblock %}
+{% block js %}
+<script src="{{url_for('static', filename='scripts/stocks.js')}}" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+{% block body %}
+<style>
+    body{
+        height: auto !important;
+    }
+</style>
+<div class="main-content">
+    <div class="container mt-5">
+        <h1>{{ stock.company_name }} ({{ stock.symbol }})</h1>
+    
+        <h2>Stock Details</h2>
+        <ul class="list-group mb-4" style="color:black;">
+            <li class="list-group-item"><strong>Market Cap:</strong>Not Available</li>
+            <li class="list-group-item"><strong>Listing Date:</strong>Not Available</li>
+            <li class="list-group-item"><strong>ISIN Code:</strong> {{ stock.isin_code }}</li>
+            <li class="list-group-item"><strong>Industry Name:</strong> 
+                <a href="/industry/{{stock.ind}}">{{ stock.ind }}</a>
+                
+            </li>
+        </ul>
+    
+        <h2>Price Chart</h2>
+        <canvas id="priceChart"></canvas>
+    </div>
+</div>
+<script>
+        const priceData = {
+        labels: [{% for price in prices %}'{{ price.date }}',{% endfor %}],
+        datasets: [
+            {
+                label: 'Close Price',
+                data: [{% for price in prices %}{{ price.close }},{% endfor %}],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 1,
+            },
+            {
+                label: 'High Price',
+                data: [{% for price in prices %}{{ price.high }},{% endfor %}],
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderWidth: 1,
+            },
+            {
+                label: 'Low Price',
+                data: [{% for price in prices %}{{ price.low }},{% endfor %}],
+                borderColor: 'rgba(255, 159, 64, 1)',
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderWidth: 1,
+            },
+            {
+                label: 'Volume',
+                data: [{% for price in prices %}{{ price.volume }},{% endfor %}],
+                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderWidth: 1,
+                type: 'bar' // Change to bar chart for volume
+            },
+            {
+                label: 'Number of Trades',
+                data: [{% for price in prices %}{{ price.no_of_trades }},{% endfor %}],
+                borderColor: 'rgba(255, 206, 86, 1)',
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderWidth: 1,
+                type: 'bar' // Change to bar chart for number of trades
+            }
+        ]
+    };
+
+    const config = {
+    type: 'line', // Default chart type
+    data: priceData,
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                // Set the minimum value for the y-axis dynamically based on your data
+                min: Math.min(...[{% for price in prices %}{{ price.low }},{% endfor %}]), // Min value of low prices
+                title: {
+                    display: true,
+                    text: 'Price / Volume',
+                },
+                ticks: {
+                    callback: function(value) {
+                        return value; // Format ticks as needed
+                    }
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: 'Date',
+                }
+            }
+        }
+    }
+};
+
+
+const priceChart = new Chart(
+    document.getElementById('priceChart'),
+    config
+);
+</script>
+{% endblock %}

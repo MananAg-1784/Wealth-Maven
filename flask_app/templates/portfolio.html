@@ -4,6 +4,16 @@ Portfolio
 {% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{{url_for('static', filename='css/portfolio.css')}}" />
+<style>
+   .card-body {
+    border: 2px solid #636363;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+    transition: transform 0.2s;
+    width: fit-content;
+    flex: none;
+        }
+</style>
 {% endblock %}
 {% block js %}
 <script src="{{url_for('static', filename='scripts/portfolio.js')}}" defer></script>
@@ -19,9 +29,18 @@ Portfolio
   {% endwith %}
   <div>
     {% if portfolios %}
-    <ul >
+    <ul style="display: flex; flex-direction: row; gap: 30px;">
       {% for message in portfolios %}
-        <li>Name : {{ message.profile_name }}  | DOB : {{message.dob}}  |  INCOME : {{message.income}} | Risk Score : {{message.risk_score}}</li>
+      <div class="card-body">
+        <h5 class="card-title">User Profile</h5>
+        <span class="card-text">
+            Name: {{ message.profile_name }} <br>
+            DOB: {{ message.dob }} <br>
+            Income: {{ message.income }} <br>
+            Risk Score: {{ message.risk_score }} <br>
+            <a href="/analyse?name={{ message.profile_name }}&risk_score={{ message.risk_score }}" class="btn btn-primary">Login</a>
+        </span>
+      </div>
       {% endfor %}
     </ul>
     {% else %}

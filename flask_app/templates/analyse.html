@@ -1,0 +1,68 @@
+
+{% extends 'base.html' %}
+{% block title %}
+Portfolio Analysis
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/analyse.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}" />
+<style>
+  .dashboard-container{
+    padding: 0px !important;
+  }
+  .chart-card{
+    width: 100% !important;
+  }
+</style>
+{% endblock %}
+{% block js %}
+<script src="{{url_for('static', filename='scripts/analyse.js')}}" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+{% block body %}
+<div style="padding: 50px !important;">
+  <div class="cards-container">
+    <div class="card">
+      <div class="card-title">Portfolio Value</div>
+      <div class="card-value">₹127,492</div>
+      <div class="card-progress">
+        <div class="progress-value positive">+12.4%</div>
+        <div>vs last month</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Current Progress</div>
+      <div class="card-value">78.5%</div>
+      <div class="card-progress">
+        <div class="progress-value positive">+5.2%</div>
+        <div>vs target</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Performance Difference</div>
+      <div class="card-value">-₹2,847</div>
+      <div class="card-progress">
+        <div class="progress-value negative">-2.1%</div>
+        <div>vs benchmark</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-container">
+    <div class="chart-card">
+      <div class="chart-title">Portfolio Performance</div>
+      <canvas id="performanceChart"></canvas>
+    </div>
+  </div>
+  <button style="margin: 50px;;"
+      class="optimize-btn"
+      onclick="window.location.href='/optimize'"
+    >
+      Optimize
+    </button>
+</div>
+  
+{% endblock %}
+
